@@ -1,8 +1,8 @@
 #include "get_next_line.h"
 char *ft_strjoin(char *s1, char *s2);
+char *ft_strdup(char *str); // TODO
+char *ft_strchr(char *str, int c); // TODO
 int ft_strlen(char *str);
-void ft_strdup(char *str);
-void ft_strchr(char *str, int c);
 
 char *ft_strjoin(char *s1, char *s2)
 /******************************************************************************
@@ -57,7 +57,21 @@ int ft_strlen(char *str)
     return (i);
 }
 
-void ft_strdup(char *str)
+char *ft_strdup(char *str)
+/******************************************************************************
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *****************************************************************************/
+{
+
+}
+
+char *ft_strchr(char *str, int c)
 /******************************************************************************
  * 
  * 
