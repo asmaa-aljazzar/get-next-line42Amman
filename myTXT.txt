@@ -1,0 +1,37 @@
+1) Prompt + Response - Single turn
+In this project, you are provided with a prompt type to write (Code Generation, Problem Reflection, Test Reasoning, Code Refactoring, Structure Data Generation, Retrieval Augmented Generation (RAG), Test Generation, Bug Fixing, Solution Reasoning, Tool Use), and basic guidelines. You will write a thoughtful, clear prompt that will generate an interesting, unique, and useful response from an LLM.
+
+
+
+Step 1: Be the user
+
+Your prompt will be perfect with these requirements:
+
+Clear Asks: Specific requests or tasks to be completed.
+Personal Perspective: The individual's viewpoint or situation.
+Context: Background information and circumstances surrounding the request.
+Goal / Value: The desired outcome or benefit of fulfilling the request.
+
+
+Step 2: Become the LLM
+After writing your prompt, you will write a response to your prompt. The response will also be completely perfect. If you were to send your ‘user written prompt’ to an LLM and that LLM provided you with your written response, you should be delighted. This response must be:
+
+Highly creative
+Neatly organized and easy to read
+Thoughtfully designed to be delightful to the reader
+
+
+Your response needs to be better than the best LLM available (state-of-the-art model: SOTA).To accomplish this:
+
+
+
+Review the Task Type: In the UI there will be a note indicating the task type (Code Generation, Problem Reflection, Test Reasoning, Code Refactoring, Structure Data Generation, Retrieval Augmented Generation (RAG), Test Generation, Bug Fixing, Solution Reasoning, Tool Use). Review the task-specific instructions for any clarifications.
+
+
+Use Perfect Spelling, Grammar, and Punctuation: In order to beat SOTA, you will need to proofread your work and eliminate any grammatical, spelling, punctuation, or other errors.
+
+
+Consider the User: Need to be sure that you respond to all of the following questions:
+Would the response you created delight the user relative to the prompt? 
+Does it address the prompt completely? 
+Does it understand the intention of the prompt? 
