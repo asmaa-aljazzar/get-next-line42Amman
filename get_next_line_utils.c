@@ -1,7 +1,7 @@
 #include "get_next_line.h"
 char *ft_strjoin(char *s1, char *s2);
-char *ft_strdup(char *str); // TODO
-char *ft_strchr(char *str, int c); // TODO
+char *ft_strdup(char *str);
+char *ft_strchr(char *str, int c);
 int ft_strlen(char *str);
 
 char *ft_strjoin(char *s1, char *s2)
@@ -68,19 +68,46 @@ char *ft_strdup(char *str)
  * 
  *****************************************************************************/
 {
+    int len;
+    char *dupl;
+    int i;
 
+    if (!str)
+        return (NULL);
+    len = ft_strlen(str);
+    dupl = malloc((len + 1) * sizeof(char));
+    if (!dupl)
+        return (NULL);
+    i = 0;
+    while (str[i] != '\0')
+    {
+        dupl[i] = str[i];
+        i++;
+    }
+    dupl[i] = '\0';
+    
+    return (dupl);
 }
 
 char *ft_strchr(char *str, int c)
 /******************************************************************************
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * Finds the first occurrence of the character `c` in the string `str`.
+ * If `c` is the null terminator, returns a pointer to the end of the string.
+ * Returns NULL if the character is not found or if `str` is NULL.
  *****************************************************************************/
 {
-
+    int i;
+    
+    i = 0;
+    if (!str)
+        return (NULL);
+    if (c == '\0')
+        return (&str[ft_strlen(str)]);
+    while (str[i] != '\0' && str[i] != c)
+    {
+        i++;
+    }
+    if (str[i] == c)
+        return (&str[i]);
+    return (NULL);
 }

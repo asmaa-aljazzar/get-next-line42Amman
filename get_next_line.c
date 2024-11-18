@@ -3,12 +3,6 @@ char *get_next_line(int fd);
 static char *read_from_file(int fd, char *str);
 static char *extract_line(char *str);
 static char *get_the_rest(char *str);
-/*
-*       /\_/\  
-*      ( o.o ) 
-*       > ^ < 
-        Meow!
-*/
 
 char *get_next_line(int fd)
 /******************************************************************************
@@ -32,7 +26,7 @@ char *get_next_line(int fd)
         return (NULL);
     line = extract_line(full_str); // extract one line and end it with \n char
     if (!line) // because it will allocate the line 
-        return (NULL);
+        return (free(full_str), NULL);
     temp = full_str; // to free the old value of full_str
     full_str = get_the_rest(full_str); // update the string by removing the line extracted
     if (!full_str)
@@ -57,12 +51,12 @@ static char *read_from_file(int fd, char *str)
     char *temp; // hold the old value of str
     
     if (!str)
-        str = ft_strdup(""); // TODO: ft_strdup()
-    buff = malloc((BUFFER_SIZE +1) * sizeof(char)); // buff must same with buffer_size for read it each iteration
+        str = ft_strdup("");
+    buff = malloc((BUFFER_SIZE + 1) * sizeof(char)); // buff must same with buffer_size for read it each iteration
     if (!buff)
         return (NULL);
     read_bytes = 1;
-    while (read_bytes != 0 && !(ft_strchr(str, '\n'))) // Reach the end of the file or \n // TODO: ft_strchr()
+    while (read_bytes > 0 && !(ft_strchr(str, '\n'))) // Reach the end of the file or \n // TODO: ft_strchr()
     { // while not \n or EOF
         read_bytes = read(fd, buff, BUFFER_SIZE);//read as buffer_size
         if (read_bytes == -1)//if can't read: permition or file not exist
@@ -71,7 +65,7 @@ static char *read_from_file(int fd, char *str)
     temp = str; // to free the old value after done
     str = ft_strjoin(str, buff); // add the read to the full string
     if (!str)
-        return (free(buff), free(temp), NULL);
+        return (free(buff), NULL);
     free(temp);
     }
     return (free(buff), str);
@@ -136,7 +130,7 @@ static char *get_the_rest(char *str)
         i++; // counting chars to remove
     if(str[i] == '\n')
         i++;
-    the_rest = malloc((ft_strlen(str) - i + 1) * sizeof(char)); // TODO: ft_strlen() 
+    the_rest = malloc((ft_strlen(str) - i + 1) * sizeof(char));
     // the malloc will be the strlen - the part we don't need + null terminator
     if (!the_rest)
         return (NULL);
@@ -152,38 +146,94 @@ static char *get_the_rest(char *str)
 
 int main()
 {
-    char *final;
-    char *null = NULL;
+    // char *final;
+    // char *null = NULL;
 
-    final = ft_strjoin("", "");
-    printf("1 Empty strs: \n");
-    printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print an empty string
-    printf("================================================\n");
+    // final = ft_strjoin("", "");
+    // printf("1 Empty strs: \n");
+    // printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print an empty string
+    // printf("================================================\n");
 
-    final = ft_strjoin("Hi", "");
-    printf("2 s2 is empty: \n");
-    printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "Hi"
-    printf("================================================\n");
+    // final = ft_strjoin("Hi", "");
+    // printf("2 s2 is empty: \n");
+    // printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "Hi"
+    // printf("================================================\n");
 
-    final = ft_strjoin("", "asmaa");
-    printf("3 s1 is empty: \n");
-    printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "asmaa"
-    printf("================================================\n");
+    // final = ft_strjoin("", "asmaa");
+    // printf("3 s1 is empty: \n");
+    // printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "asmaa"
+    // printf("================================================\n");
 
-    final = ft_strjoin("", null);
-    printf("4 s2 null: \n");
-    printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "(null)" as null is passed
-    printf("================================================\n");
+    // final = ft_strjoin("", null);
+    // printf("4 s2 null: \n");
+    // printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "(null)" as null is passed
+    // printf("================================================\n");
 
-    final = ft_strjoin(null, "");
-    printf("5 s1 null: \n");
-    printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "(null)" as null is passed
-    printf("================================================\n");
+    // final = ft_strjoin(null, "");
+    // printf("5 s1 null: \n");
+    // printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "(null)" as null is passed
+    // printf("================================================\n");
 
-    final = ft_strjoin("String1 ", "String2");
-    printf("6 s1 and s2 are both non-empty: \n");
-    printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "String1 String2"
-    printf("================================================\n");
+    // final = ft_strjoin("String1 ", "String2");
+    // printf("6 s1 and s2 are both non-empty: \n");
+    // printf("Result: \"%s\"\n", final ? final : "(null)");  // Should print "String1 String2"
+    // printf("================================================\n");
+    
+    //  char *str;
+    //  char *p;
 
+    // str = ft_strdup("");
+    // printf("duple 1 :%s\n", str);
+    // printf("================================================\n");
+    // str = ft_strdup("HI");
+    // printf("duple 2 :%s\n", str);
+    // printf("================================================\n");
+    // str = ft_strdup(null);
+    // printf("duple 2 :%s\n", str);
+    // printf("================================================\n");
+    // str = ft_strdup("hi my name is asmaa \n i love you");
+    // printf("duple 2 :%s\n", str);
+    // printf("================================================\n");
+
+    // p = ft_strchr("", 'k');
+    // printf(" 1 :%p\n", p);
+    // printf("================================================\n");
+    // p = ft_strchr("HI", 'I');
+    // printf(" 2 :%p\n", p);
+    // printf("================================================\n");
+    // p = ft_strchr(null, 't');
+    // printf(" 3 :%p\n", p);
+    // printf("================================================\n");
+    // p = ft_strchr("hi my name islll", '\0');
+    // printf(" 4 :%p\n", p);
+    // printf("================================================\n");
+    // p = ft_strchr("hi my name is asmaa \n i love you", 'm');
+    // printf(" 5 : %p\n", p);
+    // printf("================================================\n");
+    // int len;
+    
+    //  len = ft_strlen("asmaa");
+    // printf(" 1 : %d\n", len);
+    // printf("================================================\n");
+    //  len = ft_strlen("");
+    // printf(" 2 : %d\n", len);
+    // printf("================================================\n");
+    //  len = ft_strlen(NULL);
+    // printf(" 3 : %d\n", len);
+    // printf("================================================\n");
+    //  len = ft_strlen("k");
+    // printf(" 4 : %d\n", len);
+    // printf("================================================\n");
+    //  len = ft_strlen("hi my name is");
+    // printf(" 5 : %d\n", len);
+    // printf("================================================\n");
+     int fd;
+     fd = open("myt.txt", O_RDONLY);
+     char *line;
+     line = NULL;
+     line = read_from_file(fd, line);
+     printf ("\e[0mline:\n%s",line);
+    close(fd);
+    
     return 0;
 }
